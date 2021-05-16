@@ -7,72 +7,75 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
 import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import HomeScreen from '../screens/HomeScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
+import { BottomTabParamList, HomeParamList, FavoritesParamList } from '../../types';
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
-    <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+    <Tab.Navigator
+      initialRouteName="Home"
+      tabBarOptions={{activeTintColor:Colors.lochmara}}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ focused }) =>
+            <TabBarIcon
+              name="ios-home"
+              color={focused ? Colors.lochmara : Colors.slateGray} />,
         }}
       />
-      <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesTabNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ focused }) =>
+            <TabBarIcon
+            name={focused ? "ios-star" : "ios-star-outline"}
+            color={focused?Colors.lochmara:Colors.slateGray} />,
         }}
       />
-    </BottomTab.Navigator>
+    </Tab.Navigator>
   );
 }
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
+function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name'];color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeStack = createStackNavigator<HomeParamList>();
 
-function TabOneNavigator() {
+function HomeTabNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerTitle: 'Home',headerTintColor:Colors.lochmara }}
       />
-    </TabOneStack.Navigator>
+    </HomeStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const FavoritesTabStack = createStackNavigator<FavoritesParamList>();
 
-function TabTwoNavigator() {
+function FavoritesTabNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <FavoritesTabStack.Navigator>
+      <FavoritesTabStack.Screen
+        name="FavoritesScreen"
+        component={FavoritesScreen}
+        options={{ headerTitle: 'Favorites',headerTintColor:Colors.lochmara }}
       />
-    </TabTwoStack.Navigator>
+    </FavoritesTabStack.Navigator>
   );
 }
