@@ -11,6 +11,8 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import { BottomTabParamList, HomeParamList, FavoritesParamList } from '../../types';
+import FavoritesContainer from '../redux/containers/favorites.container';
+import HomeContainer from '../redux/containers/home.container'
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,7 +20,7 @@ export default function BottomTabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{activeTintColor:Colors.lochmara}}
+      tabBarOptions={{ activeTintColor: Colors.lochmara }}
     >
       <Tab.Screen
         name="Home"
@@ -36,8 +38,8 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) =>
             <TabBarIcon
-            name={focused ? "ios-star" : "ios-star-outline"}
-            color={focused?Colors.lochmara:Colors.slateGray} />,
+              name={focused ? "ios-star" : "ios-star-outline"}
+              color={focused ? Colors.lochmara : Colors.slateGray} />,
         }}
       />
     </Tab.Navigator>
@@ -46,7 +48,7 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name'];color: string }) {
+function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
@@ -59,8 +61,8 @@ function HomeTabNavigator() {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="HomeScreen"
-        component={HomeScreen}
-        options={{ headerTitle: 'Home',headerTintColor:Colors.lochmara }}
+        component={HomeContainer}
+        options={{ headerTitle: 'Home', headerTintColor: Colors.lochmara }}
       />
     </HomeStack.Navigator>
   );
@@ -73,8 +75,8 @@ function FavoritesTabNavigator() {
     <FavoritesTabStack.Navigator>
       <FavoritesTabStack.Screen
         name="FavoritesScreen"
-        component={FavoritesScreen}
-        options={{ headerTitle: 'Favorites',headerTintColor:Colors.lochmara }}
+        component={FavoritesContainer}
+        options={{ headerTitle: 'Favorites', headerTintColor: Colors.lochmara }}
       />
     </FavoritesTabStack.Navigator>
   );
