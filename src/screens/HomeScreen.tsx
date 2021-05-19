@@ -27,15 +27,4 @@ export default class HomeScreen extends React.Component<IHomeProps, {}>{
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: Colors.slateGray
-  }
-});
+const styles = StyleSheet.create({});
