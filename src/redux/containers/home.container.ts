@@ -5,7 +5,8 @@ import { RootState } from '../reducers';
 
 const mapStateToProps = (state:RootState) => {
   return {
-    allRepos: state.repositories.allRepos
+    allRepos: state.repositories.allRepos,
+    isLoading:state.loadingAPI.isLoading
   };
 };
 const mapDispatchToProps = {

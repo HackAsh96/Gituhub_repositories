@@ -15,7 +15,7 @@ export interface ReposInterface {
     org: OrgInterface
     forks: number
     stars: number
-    issues: number
+    open_issues: number
     language:string
 }
 

@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, RefreshControl } from 'react-native';
 import ReposListCard from '../components/ReposListCard';
+import Colors from '../constants/Colors';
 
 interface IHomeProps {
   getRepositories: any,
-  allRepos: any[]
+  allRepos: any[],
+  isLoading: boolean
 }
 export default class HomeScreen extends React.Component<IHomeProps, {}>{
   componentDidMount() {
@@ -16,6 +18,10 @@ export default class HomeScreen extends React.Component<IHomeProps, {}>{
   render() {
     return (
       <FlatList
+        refreshControl={<RefreshControl
+          tintColor={Colors.gray}
+          refreshing={this.props.isLoading}
+          onRefresh={this.props.getRepositories} />}
         keyExtractor={() => Math.random().toString()}
         data={this.props.allRepos}
         style={{ flex: 1 }}
