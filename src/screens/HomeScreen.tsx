@@ -1,18 +1,34 @@
 import * as React from 'react';
-import { StyleSheet,View,Text } from 'react-native';
-import Colors from '../constants/Colors';
+import { StyleSheet, FlatList } from 'react-native';
+import ReposListCard from '../components/ReposListCard';
 
-export default class HomeScreen extends React.Component<{}, {}>{
+interface IHomeProps {
+  getRepositories: any,
+  allRepos: any[]
+}
+export default class HomeScreen extends React.Component<IHomeProps, {}>{
+  componentDidMount() {
+    this.props.getRepositories()
+  }
+  _renderReposCard = ({ item }: any) => {
+    return <ReposListCard data={item} />
+  }
   render() {
     return (
-      <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-    </View>)
+      <FlatList
+        keyExtractor={() => Math.random().toString()}
+        data={this.props.allRepos}
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={true}
+        indicatorStyle='black'
+        renderItem={this._renderReposCard}
+      />
+    )
   }
 }
 
 const styles = StyleSheet.create({
- container: {
+  container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -20,6 +36,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color:Colors.slateGray
+    color: Colors.slateGray
   }
 });
