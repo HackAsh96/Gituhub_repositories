@@ -5,6 +5,7 @@
 
 export type RootStackParamList = {
   Root: undefined;
+  Detail: undefined
 };
 
 export type BottomTabParamList = {
@@ -12,6 +13,9 @@ export type BottomTabParamList = {
   Favorites: undefined;
 };
 
+export type DetailsParamList = {
+  DetailsScreen: undefined
+}
 export type HomeParamList = {
   HomeScreen: undefined;
 };
