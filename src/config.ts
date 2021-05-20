@@ -10,3 +10,12 @@ export const trimHighNumbers: any = (number:number) => {
     }
     return number
 }
+export const listOfRepoDetails:any = (item:any) => {
+    return [
+        { name: 'language', detail: item.language },
+        { name: 'stars', detail: trimHighNumbers(item.stargazers_count) },
+        { name: 'forks', detail: trimHighNumbers(item.forks) },
+        { name: 'issues', detail: trimHighNumbers(item.open_issues) },
+        { name: 'business_type', detail: item.owner.type }
+    ]
+}
