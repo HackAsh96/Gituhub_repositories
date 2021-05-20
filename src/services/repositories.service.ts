@@ -11,7 +11,6 @@ const getAllRepos=()=>{
         console.log(error)
     })
 }
-console.log('GET',getAllRepos);
 
 export const githubService = {
     getAllRepos
