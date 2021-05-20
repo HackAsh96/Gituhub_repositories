@@ -7,6 +7,7 @@ export default {
   darkGray: '#4d4d4d',
 	lightGray: '#e0e0e0',
 	gray: '#717076',
+  red:'#e44b23'
 };
 export var GithubColors:any={
     "ABAP": "#E8274B", 
