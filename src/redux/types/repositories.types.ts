@@ -4,15 +4,16 @@ import { ImageSourcePropType } from "react-native"
 export const GET_ALL_REPOS = "GET_ALL_REPOS"
 
 interface OrgInterface{
-    id:number
-    name: string
-    description: string
+    id: number
+    login:string
     created_at:moment.Moment
     avatar:ImageSourcePropType
 }
 export interface ReposInterface {
     id: number
-    org: OrgInterface
+    owner: OrgInterface
+    full_name: string
+    description: string
     forks: number
     stars: number
     open_issues: number
