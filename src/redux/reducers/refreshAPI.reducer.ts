@@ -1,13 +1,12 @@
 import {
     FETCH_REQUEST,
     FETCH_SUCCESS,
-    RefreshInterface,
     FetchActionTypes,
     FETCH_FAILURE
 } from '../types/common.types'
 
 interface RefreshAPI {
-  isLoading: boolean|RefreshInterface
+  isLoading: boolean
 }
 
 const initialState: RefreshAPI = {
