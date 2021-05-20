@@ -23,17 +23,3 @@ export const getRepositories=():any=> {
       }
   }
 }
-
-// export function likePost({ postId, userId }: { postId: String, userId: String }) {
-//   return dispatch => {
-//     dispatch(request());
-//     return feedService.likePost({ postId, userId })
-//       .then(
-//         response => {
-//           dispatch(likePostSuccess(response))
-//         },
-//         error => {
-//           dispatch(failure('Server error.'))
-//         })
-//   }
-// }
