@@ -1,19 +1,26 @@
 import * as React from 'react';
-import { StyleSheet, FlatList, RefreshControl } from 'react-native';
+import { FlatList, RefreshControl } from 'react-native';
 import ReposListCard from '../components/ReposListCard';
 import Colors from '../constants/Colors';
+import { ReposInterface } from '../redux/types';
 
 interface IHomeProps {
   getRepositories: any,
-  allRepos: any[],
-  isLoading: boolean
+  allRepos: ReposInterface[],
+  isLoading: boolean,
+  navigation: {
+    navigate: any
+  }
 }
-export default class HomeScreen extends React.Component<IHomeProps, {}>{
+export default class HomeScreen extends React.Component<IHomeProps>{
   componentDidMount() {
     this.props.getRepositories()
   }
   _renderReposCard = ({ item }: any) => {
-    return <ReposListCard data={item} />
+    return <ReposListCard
+      data={item}
+      openDetailScreen={(id: number | string) => this.props.navigation.navigate('Detail', { itemId: id })}
+    />
   }
   render() {
     return (
@@ -32,5 +39,3 @@ export default class HomeScreen extends React.Component<IHomeProps, {}>{
     )
   }
 }
-
-const styles = StyleSheet.create({});
