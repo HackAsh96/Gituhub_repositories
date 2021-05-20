@@ -6,7 +6,8 @@ import { convertDateFormat, trimHighNumbers } from '../config'
 import { AntDesign, Octicons } from '@expo/vector-icons';
 
 interface IReposListCard {
-    data: any
+    data: any,
+    openDetailScreen: any
 }
 
 export default class ReposListCard extends React.Component<IReposListCard>{
@@ -36,9 +37,9 @@ export default class ReposListCard extends React.Component<IReposListCard>{
 
     }
     render() {
-        const { data } = this.props
+        const { data, openDetailScreen } = this.props
         const splitFullName = data.full_name.split('/')
-        return <TouchableOpacity activeOpacity={0.6} style={styles.cardContainer}>
+        return <TouchableOpacity onPress={() => openDetailScreen(data.id)} activeOpacity={0.6} style={styles.cardContainer}>
             <View style={{
                 flexDirection: 'row', justifyContent: 'center', alignItems: 'center'
             }}>
