@@ -7,7 +7,7 @@ const getAllReposSuccess: ActionCreator<ReposActionTypes> = (repos: ReposInterfa
   return { type: GET_ALL_REPOS, payload: repos };
 }
 
-export const getRepositories=():any=> {
+export const getRepositories:any=()=> {
   return (dispatch:any) => {
       dispatch(request());
       try {
