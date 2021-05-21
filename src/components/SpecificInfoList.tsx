@@ -13,52 +13,52 @@ interface ISpecificInfoList {
 
 export default class SpecificInfoList extends React.Component<ISpecificInfoList>{
     render() {
-        const { info } = this.props
-        if (info.detail === null) return null
-        switch (info.name) {
+        const { info: { detail, name } } = this.props
+        if (detail === null || detail === '') return null
+        switch (name) {
             case 'stars':
                 return <View style={styles.detailCard}>
                     <AntDesign name="star" size={45} color={Colors.yellowSea} />
-                    <Text style={styles.text}>{info.detail}</Text>
+                    <Text style={styles.text}>{detail}</Text>
                 </View>
             case 'forks':
                 return <View style={styles.detailCard}>
                     <AntDesign name="fork" size={45} color={Colors.lochmara} />
-                    <Text style={styles.text}>{info.detail}</Text>
+                    <Text style={styles.text}>{detail}</Text>
                 </View>
             case 'issues':
                 return <View style={styles.detailCard}>
                     <Octicons name="issue-opened" size={45} color={Colors.red} />
-                    <Text style={styles.text}>{info.detail}</Text>
+                    <Text style={styles.text}>{detail}</Text>
                 </View>
             case 'language':
                 return <View style={styles.detailCard}>
                     <View style={[styles.languageColorContainer, {
-                        backgroundColor: GithubColors[info.detail]
+                        backgroundColor: GithubColors[detail]
                     }]} />
-                    <Text style={styles.text}>{info.detail}</Text>
+                    <Text style={styles.text}>{detail}</Text>
                 </View>
             case 'business_type':
                 return <View style={styles.detailCard}>
                     <Ionicons name="ios-business" size={45} color={Colors.gray} />
-                    <Text style={styles.text}>{info.detail}</Text>
+                    <Text style={styles.text}>{detail}</Text>
                 </View>
             case 'privacy':
                 return <View style={styles.detailCard}>
                     <MaterialIcons
-                        name={info.detail ? 'lock-outline' : 'public'}
+                        name={detail ? 'lock-outline' : 'public'}
                         size={45}
                         color={Colors.slateGray} />
-                    <Text style={styles.text}>{info.detail ? 'Private' : 'Public'}</Text>
+                    <Text style={styles.text}>{detail ? 'Private' : 'Public'}</Text>
                 </View>
             case 'website':
-                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(info.detail)} style={[styles.detailCard, styles.shadowContainer]}>
+                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(detail)} style={[styles.detailCard, styles.shadowContainer]}>
                     <FontAwesome name="internet-explorer" size={45}
                         color={Colors.internet_explorer} />
                     <Text style={styles.text}>Website</Text>
                 </TouchableOpacity>
             case 'github_repo':
-                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(info.detail)} style={[styles.detailCard, styles.shadowContainer]}>
+                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(detail)} style={[styles.detailCard, styles.shadowContainer]}>
                     <AntDesign name="github" size={45}
                         color={Colors.darkGray} />
                     <Text style={styles.text}>Github</Text>

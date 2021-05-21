@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
@@ -19,7 +18,6 @@ export default function useCachedResources() {
         await Font.loadAsync(CustomFonts);
         store.dispatch(getRepositories())
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setLoadingComplete(true);
