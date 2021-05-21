@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { FlatList, RefreshControl, ScrollView, View } from 'react-native';
-// import ListLoader from '../components/LoaderCard';
+import { FlatList, RefreshControl } from 'react-native';
 import NoElementComponent from '../components/NoElement';
 import ReposListCard from '../components/ReposListCard';
 import Colors from '../constants/Colors';
@@ -24,20 +23,8 @@ export default class HomeScreen extends React.Component<IHomeProps>{
   render() {
     const { isLoading, getRepositories, allRepos } = this.props
     if (allRepos.length === 0) {
-      return <NoElementComponent text='No data, please refresh' />
+      return <NoElementComponent text='No data, please refresh' isRefresh={true} />
     }
-    // if (isLoading) return <ScrollView
-    //   refreshControl={
-    //     <RefreshControl
-    //       tintColor={Colors.gray}
-    //       refreshing={isLoading}
-    //       onRefresh={getRepositories} />
-    //   }
-    //   style={{ marginTop: 40, flex: 1 }}>
-    //   <View style={{ flex: 1, height: Dimensions.get('window').height }}>
-    //     <ListLoader />
-    //   </View>
-    // </ScrollView>
     return (
       <FlatList
         refreshControl={<RefreshControl
