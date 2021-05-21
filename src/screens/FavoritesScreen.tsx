@@ -23,7 +23,7 @@ export default class FavoriteScreen extends React.Component<IFavoriteRepos>{
   render() {
     const { favoriteRepos, isLoading, getRepositories } = this.props
     if (favoriteRepos.length === 0) {
-      return <NoElementComponent text='No favorites' />
+      return <NoElementComponent text='No favorites' isRefresh={false} />
     }
     return (
       <FlatList
