@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FlatList, RefreshControl } from 'react-native';
+import { FlatList, RefreshControl, ScrollView } from 'react-native';
+import NoElementComponent from '../components/NoElement';
 import ReposListCard from '../components/ReposListCard';
 import Colors from '../constants/Colors';
 import { FavoriteRepoInterface } from '../redux/types';
@@ -20,14 +21,18 @@ export default class FavoriteScreen extends React.Component<IFavoriteRepos>{
     />
   }
   render() {
+    const { favoriteRepos, isLoading, getRepositories } = this.props
+    if (favoriteRepos.length === 0) {
+      return <NoElementComponent text='No favorites' isRefresh={false} />
+    }
     return (
       <FlatList
         refreshControl={<RefreshControl
           tintColor={Colors.gray}
-          refreshing={this.props.isLoading}
-          onRefresh={this.props.getRepositories} />}
+          refreshing={isLoading}
+          onRefresh={getRepositories} />}
         keyExtractor={() => Math.random().toString()}
-        data={this.props.favoriteRepos}
+        data={favoriteRepos}
         style={{ flex: 1 }}
         showsVerticalScrollIndicator={true}
         indicatorStyle='black'

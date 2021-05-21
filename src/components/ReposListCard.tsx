@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import Colors, { GithubColors } from '../constants/Colors'
 import Fonts from '../constants/Fonts'
-import { convertDateFormat, trimHighNumbers } from '../config'
+import { convertDateFormat, trimHighNumbers } from '../helper.config'
 import { AntDesign, Octicons } from '@expo/vector-icons';
 
 interface IReposListCard {
@@ -19,13 +19,13 @@ export default class ReposListCard extends React.Component<IReposListCard>{
                 }]} />
             },
             {
-                detail: trimHighNumbers(item.stargazers_count), extra: <AntDesign name="star" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.stargazers_count), extra: <AntDesign name="star" size={14} color={Colors.yellowSea} />
             },
             {
-                detail: trimHighNumbers(item.forks), extra: <AntDesign name="fork" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.forks), extra: <AntDesign name="fork" size={14} color={Colors.lochmara} />
             },
             {
-                detail: trimHighNumbers(item.open_issues), extra: <Octicons name="issue-opened" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.open_issues), extra: <Octicons name="issue-opened" size={14} color={Colors.red} />
             }]
         return details.map(value => {
             if (!value.detail) return null

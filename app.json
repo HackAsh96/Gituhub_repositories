@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "starred_repos",
-    "slug": "starred_repos",
+    "name": "Github repositories",
+    "slug": "github-repositories",
     "version": "1.0.0",
+    "privacy": "unlisted",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -29,6 +30,7 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "Most starred Github repositories "
   }
 }

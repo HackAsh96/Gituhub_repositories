@@ -1,21 +1,20 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import Colors, { GithubColors } from '../constants/Colors'
 import Fonts from '../constants/Fonts'
-import { convertDateFormat, trimHighNumbers } from '../config'
-import { AntDesign, Ionicons, Octicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, Octicons, MaterialIcons, FontAwesome } from '@expo/vector-icons';
 
 interface ISpecificInfoList {
     info: {
         name: string,
-        detail: string | number
+        detail: any
     }
 }
 
 export default class SpecificInfoList extends React.Component<ISpecificInfoList>{
     render() {
         const { info } = this.props
-        if (!info.detail) return null
+        if (info.detail === null) return null
         switch (info.name) {
             case 'stars':
                 return <View style={styles.detailCard}>
@@ -44,6 +43,26 @@ export default class SpecificInfoList extends React.Component<ISpecificInfoList>
                     <Ionicons name="ios-business" size={45} color={Colors.gray} />
                     <Text style={styles.text}>{info.detail}</Text>
                 </View>
+            case 'privacy':
+                return <View style={styles.detailCard}>
+                    <MaterialIcons
+                        name={info.detail ? 'lock-outline' : 'public'}
+                        size={45}
+                        color={Colors.slateGray} />
+                    <Text style={styles.text}>{info.detail ? 'Private' : 'Public'}</Text>
+                </View>
+            case 'website':
+                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(info.detail)} style={[styles.detailCard, styles.shadowContainer]}>
+                    <FontAwesome name="internet-explorer" size={45}
+                        color={Colors.internet_explorer} />
+                    <Text style={styles.text}>Website</Text>
+                </TouchableOpacity>
+            case 'github_repo':
+                return <TouchableOpacity activeOpacity={0.7} onPress={() => Linking.openURL(info.detail)} style={[styles.detailCard, styles.shadowContainer]}>
+                    <AntDesign name="github" size={45}
+                        color={Colors.darkGray} />
+                    <Text style={styles.text}>Github</Text>
+                </TouchableOpacity>
             default:
                 return null
         }
@@ -66,10 +85,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 20,
+        marginVertical: 5,
         width: 130,
         height: 130,
         borderRadius: 20,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white
+    },
+    shadowContainer: {
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

@@ -7,7 +7,10 @@ export default {
   darkGray: '#4d4d4d',
 	lightGray: '#e0e0e0',
 	gray: '#717076',
-  red:'#e44b23'
+  red: '#e44b23',
+  loaderBackground: '#F5F5F5',
+  loaderForeground: '#DBDADA',
+  internet_explorer:'#18BCEF'
 };
 export var GithubColors:any={
     "ABAP": "#E8274B", 

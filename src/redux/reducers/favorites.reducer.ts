@@ -18,11 +18,12 @@ export default function reducer(state: FavoriteReposState = initialState, action
           return Object.assign({}, state, {
           favoriteRepos: addedItem.slice(0)
           })
-      case REMOVE_FAVORITE_REPO:
-          const indexOfRepo=state.favoriteRepos.findIndex((item:any)=>item.id===action.payload)
-          const newFavoriteList=state.favoriteRepos.splice(indexOfRepo,1)
+    case REMOVE_FAVORITE_REPO:
+      const newFavoriteList = state.favoriteRepos
+      const indexOfRepo = state.favoriteRepos.findIndex((item: any) => item.id === action.payload)
+       newFavoriteList.splice(indexOfRepo,1)
           return Object.assign({}, state, {
-              favoriteRepos:newFavoriteList
+              favoriteRepos:newFavoriteList.slice(0)
           })
     default:
       return state

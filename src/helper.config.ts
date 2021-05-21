@@ -10,12 +10,19 @@ export const trimHighNumbers: any = (number:number) => {
     }
     return number
 }
-export const listOfRepoDetails:any = (item:any) => {
+export const listOfRepoDetails: any = (item: any) => {
     return [
         { name: 'language', detail: item.language },
         { name: 'stars', detail: trimHighNumbers(item.stargazers_count) },
         { name: 'forks', detail: trimHighNumbers(item.forks) },
         { name: 'issues', detail: trimHighNumbers(item.open_issues) },
-        { name: 'business_type', detail: item.owner.type }
+        { name: 'business_type', detail: item.owner.type },
+        { name: 'privacy', detail: item.private }
+    ]
+}
+export const listOfLinks: any = (item: any) => {
+    return [
+        { name: 'website', detail: item.homepage },
+        { name: 'github_repo', detail: item.html_url }
     ]
 }
