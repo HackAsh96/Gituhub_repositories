@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import Colors, { GithubColors } from '../constants/Colors'
 import Fonts from '../constants/Fonts'
-import { convertDateFormat, trimHighNumbers } from '../config'
+import { convertDateFormat, trimHighNumbers } from '../helper.config'
 import { AntDesign, Octicons } from '@expo/vector-icons';
 
 interface IReposListCard {
