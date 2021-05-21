@@ -19,13 +19,13 @@ export default class ReposListCard extends React.Component<IReposListCard>{
                 }]} />
             },
             {
-                detail: trimHighNumbers(item.stargazers_count), extra: <AntDesign name="star" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.stargazers_count), extra: <AntDesign name="star" size={14} color={Colors.yellowSea} />
             },
             {
-                detail: trimHighNumbers(item.forks), extra: <AntDesign name="fork" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.forks), extra: <AntDesign name="fork" size={14} color={Colors.lochmara} />
             },
             {
-                detail: trimHighNumbers(item.open_issues), extra: <Octicons name="issue-opened" size={14} color={Colors.darkGray} />
+                detail: trimHighNumbers(item.open_issues), extra: <Octicons name="issue-opened" size={14} color={Colors.red} />
             }]
         return details.map(value => {
             if (!value.detail) return null
