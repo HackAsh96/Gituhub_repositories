@@ -40,38 +40,22 @@ export default class ReposListCard extends React.Component<IReposListCard>{
         const { data, openDetailScreen } = this.props
         const splitFullName = data.full_name.split('/')
         return <TouchableOpacity onPress={() => openDetailScreen(data.id)} activeOpacity={0.6} style={styles.cardContainer}>
-            <View style={{
-                flexDirection: 'row', justifyContent: 'center', alignItems: 'center'
-            }}>
+            <View style={styles.innerCardContainer}>
                 <View style={{ flex: 2 }}>
-                    <Text style={{ fontFamily: Fonts.regular, fontSize: 17, color: Colors.lochmara }}>{splitFullName[0]}/<Text style={{ fontFamily: Fonts.bold }}>{splitFullName[1]}</Text></Text>
+                    <Text style={styles.title}>{splitFullName[0]}/<Text style={{ fontFamily: Fonts.bold }}>{splitFullName[1]}</Text></Text>
                     <Text
-                        style={{
-                            marginVertical: 5,
-                            fontFamily: Fonts.regular,
-                            fontSize: 13,
-                            color: Colors.gray
-                        }}>Built by <Text
+                        style={styles.creationDateText}>Built by <Text
                             style={{
                                 fontFamily: Fonts.bold
                             }}>{data.owner.login}</Text> in {convertDateFormat(data.created_at)} </Text>
                     <Text
-                        style={{
-                            fontFamily: Fonts.regular,
-                            fontSize: 12,
-                            color: Colors.lochmara
-                        }}>{data.description}</Text>
+                        style={styles.description}>{data.description}</Text>
                 </View>
                 <View
-                    style={{
-                        marginLeft: 20,
-                        alignSelf: 'stretch',
-                        alignItems: 'flex-end',
-                        justifyContent: 'center'
-                    }}>
+                    style={styles.imageWrapper}>
                     <Image
                         source={{ uri: data.owner.avatar_url }}
-                        style={{ height: 70, width: 70, borderRadius: 35 }}
+                        style={styles.image}
                         resizeMode='contain' />
                 </View>
             </View>
@@ -83,6 +67,38 @@ export default class ReposListCard extends React.Component<IReposListCard>{
 }
 
 const styles = StyleSheet.create({
+    imageWrapper: {
+        marginLeft: 20,
+        alignSelf: 'stretch',
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+    },
+    image: {
+        height: 70,
+        width: 70,
+        borderRadius: 35
+    },
+    description: {
+        fontFamily: Fonts.regular,
+        fontSize: 12,
+        color: Colors.lochmara
+    },
+    creationDateText: {
+        marginVertical: 5,
+        fontFamily: Fonts.regular,
+        fontSize: 13,
+        color: Colors.gray
+    },
+    title: {
+        fontFamily: Fonts.regular,
+        fontSize: 17,
+        color: Colors.lochmara
+    },
+    innerCardContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     cardContainer: {
         flex: 1,
         backgroundColor: Colors.white,

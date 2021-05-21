@@ -82,13 +82,13 @@ export default class DetailsScreen extends React.Component<IDetailProps, IDetail
         const { favoriteRepos, route: { params: { itemId } } } = this.props
         const isFavorite = favoriteRepos.some((item: any) => item.id === itemId)
         const splitFullName = repository.full_name.split('/')
-        return <View style={{ flex: 1, flexDirection: 'row', marginVertical: 20, paddingBottom: 30, justifyContent: 'center', alignItems: 'center' }}>
-            <Image source={{ uri: repository.owner.avatar_url }} style={{ height: 100, width: 100, borderRadius: 50 }} />
-            <View style={{ marginLeft: 40, flex: 1, justifyContent: 'center', alignSelf: 'stretch' }}>
-                <Text style={{ fontFamily: Fonts.regular, fontSize: 25, color: Colors.lochmara }}>{splitFullName[0]}/<Text style={{ fontFamily: Fonts.bold }}>{splitFullName[1]}</Text></Text>
-                <Text style={{ fontFamily: Fonts.bold, fontSize: 15, color: Colors.gray, marginTop: 5 }}>Built in {convertDateFormat(repository.created_at)}</Text>
-                <Text style={{ fontFamily: Fonts.regular, fontSize: 15, color: Colors.gray, marginTop: 10 }}>Last update on {convertDateFormat(repository.update_at)}</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+        return <View style={styles.headerContainer}>
+            <Image source={{ uri: repository.owner.avatar_url }} style={styles.image} />
+            <View style={styles.headerDetailsContainer}>
+                <Text style={styles.headerTitleText}>{splitFullName[0]}/<Text style={{ fontFamily: Fonts.bold }}>{splitFullName[1]}</Text></Text>
+                <Text style={styles.creationDateText}>Built in {convertDateFormat(repository.created_at)}</Text>
+                <Text style={styles.updateDateText}>Last update on {convertDateFormat(repository.update_at)}</Text>
+                <View style={styles.buttonsContainer}>
                     <TouchableOpacity
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                         style={{
@@ -132,6 +132,47 @@ export default class DetailsScreen extends React.Component<IDetailProps, IDetail
 }
 
 const styles = StyleSheet.create({
+    image: {
+        height: 100,
+        width: 100,
+        borderRadius: 50
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 20
+    },
+    updateDateText: {
+        fontFamily: Fonts.regular,
+        fontSize: 15,
+        color: Colors.gray,
+        marginTop: 10
+    },
+    creationDateText: {
+        fontFamily: Fonts.bold,
+        fontSize: 15,
+        color: Colors.gray,
+        marginTop: 5
+    },
+    headerTitleText: {
+        fontFamily: Fonts.regular,
+        fontSize: 25,
+        color: Colors.lochmara
+    },
+    headerDetailsContainer: {
+        marginLeft: 40,
+        flex: 1,
+        justifyContent: 'center',
+        alignSelf: 'stretch'
+    },
+    headerContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        marginVertical: 20,
+        paddingBottom: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     container: {
         flex: 1,
         paddingHorizontal: 10
