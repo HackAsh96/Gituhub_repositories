@@ -13,7 +13,7 @@ export const addRepoToFavoriteList = (repo: object) => {
       dispatch(addFavorite(repo))
   }
 }
-export const removeRepoFromFavoriteList = (id:number|string): any => {
+export const removeRepoFromFavoriteList = (id:number|string) => {
     return (dispatch: any) => {
       dispatch(removeFavorite(id))
   }
