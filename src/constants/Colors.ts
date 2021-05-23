@@ -7,10 +7,30 @@ export default {
   darkGray: '#4d4d4d',
 	lightGray: '#e0e0e0',
 	gray: '#717076',
-  red: '#e44b23',
   loaderBackground: '#F5F5F5',
   loaderForeground: '#DBDADA',
-  internet_explorer:'#18BCEF'
+  internet_explorer: '#18BCEF',
+	red: '#cc5656',
+	infoBlue: '#3DACC6',
+	gradientInfoBlue: [
+		'rgba(97,193,215,0.05)',
+		'rgba(97,193,215,0.1)',
+		'rgba(61,172,198,0.15)',
+		'rgba(61,172,198,0.2)',
+		'rgba(30,152,181,0.3)',
+		'rgba(30,152,181,0.3)',
+		'rgba(4,123,151,0.5)',
+		'rgba(4,123,151,0.5)',],
+	yellow: '#ffc247',
+	gradientYellow: [
+		'rgba(255,205,106,0.05)',
+		'rgba(255,205,106,0.1)',
+		'rgba(255,194,71,0.15)',
+		'rgba(255,194,71,0.2)',
+		'rgba(240,169,26,0.3)',
+		'rgba(240,169,26,0.3)',
+		'rgba(187,128,9,0.5)',
+		'rgba(187,128,9,0.5)',]
 };
 export var GithubColors:any={
     "ABAP": "#E8274B", 
