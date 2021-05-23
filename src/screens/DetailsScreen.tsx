@@ -14,6 +14,9 @@ interface IDetailProps {
     addRepoToFavoriteList: any
     removeRepoFromFavoriteList: any
     route: any
+    navigation: {
+        navigate: any
+    }
 }
 interface IDetailState {
     repository: any
@@ -59,10 +62,23 @@ export default class DetailsScreen extends React.Component<IDetailProps, IDetail
     }
     handlePress = (value: boolean) => {
         const { repository } = this.state
-        const { addRepoToFavoriteList, removeRepoFromFavoriteList } = this.props
-        if (!value) addRepoToFavoriteList(repository)
+        const { addRepoToFavoriteList, removeRepoFromFavoriteList, navigation } = this.props
+        if (!value) {
+            addRepoToFavoriteList(repository);
+            (window as any).showToast({
+                type: 'success',
+                message: 'Added to your favorite list',
+                status: true,
+                navigate: () => navigation.navigate('Favorites')
+            });
+        }
         else {
-            removeRepoFromFavoriteList(repository.id)
+            removeRepoFromFavoriteList(repository.id);
+            (window as any).showToast({
+                type: 'info',
+                message: 'Removed from your favorite list',
+                status: true
+            });
         }
     }
     onShare = async () => {
