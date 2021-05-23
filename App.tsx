@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import ToastComponent from './src/components/ToastMessage';
 
 import useCachedResources from './src/hooks/useCachedResources';
 import Navigation from './src/navigation';
@@ -15,6 +16,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
+          <ToastComponent />
           <Navigation />
           <StatusBar />
         </SafeAreaProvider>
