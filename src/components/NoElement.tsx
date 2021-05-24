@@ -39,8 +39,6 @@ export default class NoElementComponent extends React.Component<INoElementCompon
             style={{
                 flex: 1,
                 backgroundColor: Colors.white,
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20,
                 justifyContent: 'center',
             }}>
             <Image
